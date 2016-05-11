@@ -35,6 +35,7 @@ module StripeMock
     include StripeMock::RequestHandlers::Plans
     include StripeMock::RequestHandlers::Recipients
     include StripeMock::RequestHandlers::Transfers
+    include StripeMock::RequestHandlers::Refunds
     include StripeMock::RequestHandlers::Tokens
 
 

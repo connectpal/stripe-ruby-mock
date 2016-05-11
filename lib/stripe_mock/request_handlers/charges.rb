@@ -80,7 +80,8 @@ module StripeMock
           refund = Data.mock_refund(
             :balance_transaction => new_balance_transaction('txn'),
             :id => new_id('re'),
-            :amount => charge[:amount] - params[:amount]
+            :amount => charge[:amount] - params[:amount],
+            :created => Time.now.utc.to_i
           )
           add_refund_to_charge(refund, charge)
         end
@@ -98,7 +99,8 @@ module StripeMock
 
         refund = Data.mock_refund params.merge(
           :balance_transaction => new_balance_transaction('txn'),
-          :id => new_id('re')
+          :id => new_id('re'),
+          :created => Time.now.utc.to_i
         )
         add_refund_to_charge(refund, charge)
         charge
@@ -110,7 +112,8 @@ module StripeMock
         refund = Data.mock_refund params.merge(
           :balance_transaction => new_balance_transaction('txn'),
           :id => new_id('re'),
-          :charge => charge[:id]
+          :charge => charge[:id],
+          :created => Time.now.utc.to_i
         )
         add_refund_to_charge(refund, charge)
         refund

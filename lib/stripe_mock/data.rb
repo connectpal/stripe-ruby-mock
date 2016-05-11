@@ -192,7 +192,10 @@ module StripeMock
         object: "refund",
         balance_transaction: "txn_4fWh2RKvgxcXqV",
         metadata: {},
-        charge: "ch_4fWhYjzQ23UFWT"
+        charge: "ch_4fWhYjzQ23UFWT",
+        reason: "",
+        receipt_number: "",
+        status: "succeeded"
       }.merge(params)
     end
 
