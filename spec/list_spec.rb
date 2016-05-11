@@ -43,7 +43,8 @@ describe StripeMock::Data::List do
       object: "list",
       data: [charge1, charge2, charge3],
       url: "/v1/charges",
-      has_more: false
+      has_more: false,
+      total_count: 3
     )
   end
 
