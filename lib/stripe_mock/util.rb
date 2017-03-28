@@ -1,5 +1,28 @@
 module StripeMock
   module Util
+    class CardTypeDetector
+      attr_reader :number
+
+      def initialize(number)
+        @number = number
+      end
+
+      # TODO: Add more types support
+      def card_type
+        length = number.length
+        if length == 15 && number =~ /^(34|37)/
+          'American Express'
+        elsif length == 16 && number =~ /^6011/
+          'Discover'
+        elsif length == 16 && number =~ /^5[1-5]/
+          'Mastercard'
+        elsif (length == 13 || length == 16) && number =~ /^4/
+          'Visa'
+        else
+          'Unknown'
+        end
+      end
+    end
 
     def self.rmerge(desh_hash, source_hash)
       return source_hash if desh_hash.nil?
@@ -30,9 +53,10 @@ module StripeMock
         else
           new_param[:last4] = new_param[:number][-4..-1]
         end
+
+        new_param[:type] = CardTypeDetector.new(new_param[:number]).card_type
       end
       old_param.merge(new_param)
     end
-
   end
 end
